@@ -168,7 +168,7 @@ class UnityModuleImpl implements UnityModule {
         UnityNativeModule.lowMemory()
     }
 
-    public windowFocusChanged(boolean hasFocus) {
+    public windowFocusChanged (hasFocus: boolean) {
         UnityNativeModule.windowFocusChanged(hasFocus)
     }
 
