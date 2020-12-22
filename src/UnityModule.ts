@@ -50,6 +50,11 @@ export interface UnityModule {
     resume (): void;
 
     /**
+     * Quit the unity player
+     */
+    quit (): void;
+
+    /**
      * Post LowMemory to unity player
      */
     lowMemory (): void;
@@ -162,6 +167,10 @@ class UnityModuleImpl implements UnityModule {
 
     public resume () {
         UnityNativeModule.resume()
+    }
+
+    public quit () {
+        UnityNativeModule.quit()
     }
 
     public lowMemory () {

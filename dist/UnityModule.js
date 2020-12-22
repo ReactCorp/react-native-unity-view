@@ -118,6 +118,9 @@ var UnityModuleImpl = /** @class */ (function () {
     UnityModuleImpl.prototype.resume = function () {
         UnityNativeModule.resume();
     };
+    UnityModuleImpl.prototype.quit = function () {
+        UnityNativeModule.quit();
+    };
     UnityModuleImpl.prototype.lowMemory = function () {
         UnityNativeModule.lowMemory();
     };

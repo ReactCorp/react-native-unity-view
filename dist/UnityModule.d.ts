@@ -38,6 +38,10 @@ export interface UnityModule {
      */
     resume(): void;
     /**
+     * Quit the unity player
+     */
+    quit(): void;
+    /**
      * Post LowMemory to unity player
      */
     lowMemory(): void;

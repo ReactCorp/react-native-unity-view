@@ -110,6 +110,12 @@ public class UnityUtils {
         }
     }
 
+    public static void quit() {
+        if (isUnityReady() && unityPlayer != null) {
+            unityPlayer.quit();
+        }
+    }
+
     public static void lowMemory() {
         if (unityPlayer != null) {
             unityPlayer.lowMemory();
