@@ -110,6 +110,12 @@ public class UnityUtils {
         }
     }
 
+    public static void lowMemory() {
+        if (unityPlayer != null) {
+            unityPlayer.lowMemory();
+        }
+    }
+
     /**
      * Invoke by unity C#
      */

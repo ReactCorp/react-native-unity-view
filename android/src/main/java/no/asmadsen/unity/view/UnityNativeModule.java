@@ -60,6 +60,11 @@ public class UnityNativeModule extends ReactContextBaseJavaModule implements Uni
         UnityUtils.resume();
     }
 
+    @ReactMethod
+    public void lowMemory() {
+        UnityUtils.lowMemory();
+    }
+
     @Override
     public void onMessage(String message) {
         ReactContext context = getReactApplicationContext();
