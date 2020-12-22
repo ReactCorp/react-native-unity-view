@@ -85,6 +85,9 @@ var UnityModuleImpl = /** @class */ (function () {
             });
         });
     };
+    UnityModuleImpl.prototype.quit = function () {
+        return UnityNativeModule.quit();
+    };
     UnityModuleImpl.prototype.createUnity = function () {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
@@ -117,9 +120,6 @@ var UnityModuleImpl = /** @class */ (function () {
     };
     UnityModuleImpl.prototype.resume = function () {
         UnityNativeModule.resume();
-    };
-    UnityModuleImpl.prototype.quit = function () {
-        UnityNativeModule.quit();
     };
     UnityModuleImpl.prototype.lowMemory = function () {
         UnityNativeModule.lowMemory();

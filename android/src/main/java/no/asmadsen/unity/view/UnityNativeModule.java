@@ -44,6 +44,16 @@ public class UnityNativeModule extends ReactContextBaseJavaModule implements Uni
             }
         });
     }
+
+    @ReactMethod
+    public void quit(final Promise promise) {
+        UnityUtils.quit(getCurrentActivity(), new UnityUtils.QuitCallback() {
+            @Override
+            public void onQuited() {
+                promise.resolve(true);
+            }
+        });
+    }
     
     @ReactMethod
     public void postMessage(String gameObject, String methodName, String message) {

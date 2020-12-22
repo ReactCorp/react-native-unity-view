@@ -26,6 +26,11 @@ export interface UnityModule {
     unloadPlayer(): Promise<boolean>;
 
     /**
+     * Quit the unity player
+     */
+    quit (): Promise<boolean>;
+
+    /**
      * Send Message to UnityMessageManager.
      * @param message The message will post.
      */
@@ -48,11 +53,6 @@ export interface UnityModule {
      * Resume the unity player
      */
     resume (): void;
-
-    /**
-     * Quit the unity player
-     */
-    quit (): void;
 
     /**
      * Post LowMemory to unity player
@@ -136,6 +136,10 @@ class UnityModuleImpl implements UnityModule {
         return UnityNativeModule.unloadPlayer()
     }
 
+    public quit () {
+        return UnityNativeModule.quit()
+    }
+
     public async createUnity () {
         return UnityNativeModule.createUnity()
     }
@@ -167,10 +171,6 @@ class UnityModuleImpl implements UnityModule {
 
     public resume () {
         UnityNativeModule.resume()
-    }
-
-    public quit () {
-        UnityNativeModule.quit()
     }
 
     public lowMemory () {

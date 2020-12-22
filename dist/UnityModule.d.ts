@@ -18,6 +18,10 @@ export interface UnityModule {
      */
     unloadPlayer(): Promise<boolean>;
     /**
+     * Quit the unity player
+     */
+    quit(): Promise<boolean>;
+    /**
      * Send Message to UnityMessageManager.
      * @param message The message will post.
      */
@@ -37,10 +41,6 @@ export interface UnityModule {
      * Resume the unity player
      */
     resume(): void;
-    /**
-     * Quit the unity player
-     */
-    quit(): void;
     /**
      * Post LowMemory to unity player
      */

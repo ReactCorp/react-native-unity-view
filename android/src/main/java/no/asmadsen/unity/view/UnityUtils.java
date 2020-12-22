@@ -1,7 +1,6 @@
 package no.asmadsen.unity.view;
 
 import android.app.Activity;
-import android.content.Context;
 import android.graphics.PixelFormat;
 import android.os.Build;
 import android.view.ViewGroup;
@@ -89,6 +88,21 @@ public class UnityUtils {
         });
     }
 
+    public static void quit(final Activity activity, final QuitCallback callback) {
+        if (unityPlayer == null) {
+            callback.onQuited();
+            return;
+        }
+        activity.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                unityPlayer.quit();
+                _isUnityReady = false;
+                callback.onQuited();
+            }
+        });
+    }
+
     public static void postMessage(String gameObject, String methodName, String message) {
         if (!_isUnityReady) {
             return;
@@ -107,12 +121,6 @@ public class UnityUtils {
         if (unityPlayer != null) {
             unityPlayer.resume();
             _isUnityPaused = false;
-        }
-    }
-
-    public static void quit() {
-        if (isUnityReady() && unityPlayer != null) {
-            unityPlayer.quit();
         }
     }
 
@@ -179,5 +187,9 @@ public class UnityUtils {
 
     public interface CreateCallback {
         void onReady();
+    }
+
+    public interface QuitCallback {
+        void onQuited();
     }
 }
