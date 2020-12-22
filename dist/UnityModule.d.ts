@@ -38,6 +38,14 @@ export interface UnityModule {
      */
     resume(): void;
     /**
+     * Post LowMemory to unity player
+     */
+    lowMemory (): void;
+    /**
+     * Post focusChanged to unity player
+     */
+    windowFocusChanged (hasFocus: boolean): void
+    /**
      * Receive string and json message from unity.
      */
     addMessageListener(listener: (message: string | MessageHandler) => void): number;
