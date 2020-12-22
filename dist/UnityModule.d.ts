@@ -34,17 +34,17 @@ export interface UnityModule {
      */
     pause(): void;
     /**
-     * Pause the unity player
+     * Resume the unity player
      */
     resume(): void;
     /**
      * Post LowMemory to unity player
      */
-    lowMemory (): void;
+    lowMemory(): void;
     /**
      * Post focusChanged to unity player
      */
-    windowFocusChanged (hasFocus: boolean): void
+    windowFocusChanged(hasFocus: boolean): void;
     /**
      * Receive string and json message from unity.
      */

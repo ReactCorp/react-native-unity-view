@@ -36,6 +36,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 exports.__esModule = true;
+exports.UnityModule = void 0;
 var react_native_1 = require("react-native");
 var MessageHandler_1 = require("./MessageHandler");
 var UnityNativeModule = react_native_1.NativeModules.UnityNativeModule;
@@ -116,6 +117,12 @@ var UnityModuleImpl = /** @class */ (function () {
     };
     UnityModuleImpl.prototype.resume = function () {
         UnityNativeModule.resume();
+    };
+    UnityModuleImpl.prototype.lowMemory = function () {
+        UnityNativeModule.lowMemory();
+    };
+    UnityModuleImpl.prototype.windowFocusChanged = function (hasFocus) {
+        UnityNativeModule.windowFocusChanged(hasFocus);
     };
     UnityModuleImpl.prototype.addMessageListener = function (listener) {
         var id = this.getHandleId();
