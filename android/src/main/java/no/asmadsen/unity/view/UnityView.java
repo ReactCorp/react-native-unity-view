@@ -3,17 +3,16 @@ package no.asmadsen.unity.view;
 import android.content.Context;
 import android.content.res.Configuration;
 import android.widget.FrameLayout;
-import com.unity3d.player.UnityPlayer;
 
 public class UnityView extends FrameLayout {
 
-    private UnityPlayer view;
+    private NoKilledUnityPlayer view;
 
     protected UnityView(Context context) {
         super(context);
     }
 
-    public void setUnityPlayer(UnityPlayer player) {
+    public void setUnityPlayer(NoKilledUnityPlayer player) {
         this.view = player;
         UnityUtils.addUnityViewToGroup(this);
     }

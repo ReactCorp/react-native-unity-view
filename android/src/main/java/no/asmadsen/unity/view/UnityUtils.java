@@ -5,7 +5,6 @@ import android.graphics.PixelFormat;
 import android.os.Build;
 import android.view.ViewGroup;
 import android.view.WindowManager;
-import com.unity3d.player.UnityPlayer;
 import java.util.concurrent.CopyOnWriteArraySet;
 
 import static android.view.ViewGroup.LayoutParams.MATCH_PARENT;
@@ -13,11 +12,11 @@ import static android.view.ViewGroup.LayoutParams.MATCH_PARENT;
 public class UnityUtils {
     private static final CopyOnWriteArraySet<UnityEventListener> mUnityEventListeners =
             new CopyOnWriteArraySet<>();
-    private static UnityPlayer unityPlayer;
+    private static NoKilledUnityPlayer unityPlayer;
     private static boolean _isUnityReady;
     private static boolean _isUnityPaused;
 
-    public static UnityPlayer getPlayer() {
+    public static NoKilledUnityPlayer getPlayer() {
         if (!_isUnityReady) {
             return null;
         }
@@ -48,7 +47,7 @@ public class UnityUtils {
                     fullScreen = true;
                 }
 
-                unityPlayer = new UnityPlayer(activity);
+                unityPlayer = new NoKilledUnityPlayer(activity);
 
                 try {
                     // wait a moument. fix unity cannot start when startup.
@@ -107,7 +106,7 @@ public class UnityUtils {
         if (!_isUnityReady) {
             return;
         }
-        UnityPlayer.UnitySendMessage(gameObject, methodName, message);
+        NoKilledUnityPlayer.UnitySendMessage(gameObject, methodName, message);
     }
 
     public static void pause() {
