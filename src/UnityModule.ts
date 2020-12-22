@@ -45,9 +45,19 @@ export interface UnityModule {
     pause (): void;
 
     /**
-     * Pause the unity player
+     * Resume the unity player
      */
     resume (): void;
+
+    /**
+     * Post LowMemory to unity player
+     */
+    lowMemory (): void;
+
+    /**
+     * Post focusChanged to unity player
+     */
+    windowFocusChanged (hasFocus: boolean): void;
 
     /**
      * Receive string and json message from unity.
@@ -152,6 +162,14 @@ class UnityModuleImpl implements UnityModule {
 
     public resume () {
         UnityNativeModule.resume()
+    }
+
+    public lowMemory () {
+        UnityNativeModule.lowMemory()
+    }
+
+    public windowFocusChanged(boolean hasFocus) {
+        UnityNativeModule.windowFocusChanged(hasFocus)
     }
 
     public addMessageListener (listener: (handler: string | MessageHandler) => void) {
