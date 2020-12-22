@@ -116,6 +116,12 @@ public class UnityUtils {
         }
     }
 
+    public static void windowFocusChanged(boolean hasFocus) {
+        if (unityPlayer != null) {
+            unityPlayer.windowFocusChanged(hasFocus);
+        }
+    }
+
     /**
      * Invoke by unity C#
      */

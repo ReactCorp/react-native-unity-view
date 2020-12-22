@@ -65,6 +65,11 @@ public class UnityNativeModule extends ReactContextBaseJavaModule implements Uni
         UnityUtils.lowMemory();
     }
 
+    @ReactMethod
+    public void windowFocusChanged(boolean hasFocus) {
+        UnityUtils.windowFocusChanged(hasFocus);
+    }
+
     @Override
     public void onMessage(String message) {
         ReactContext context = getReactApplicationContext();
