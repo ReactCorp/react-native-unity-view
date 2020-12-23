@@ -75,7 +75,7 @@ public class UnityUtils {
     }
 
     public static void unloadPlayer(final Activity activity, final CreateCallback callback) {
-        if (unityPlayer == null) {
+        if (unityPlayer == null || !_isUnityReady) {
             callback.onReady();
             return;
         }
