@@ -9,7 +9,7 @@ var MessageHandler = /** @class */ (function () {
     }
     MessageHandler.deserialize = function (message) {
         if (!MessageHandler.isUnityMessage(message)) {
-            throw new Error("\"" + message + "\" is't an UnityMessage.");
+            throw new Error("\"".concat(message, "\" is't an UnityMessage."));
         }
         message = message.replace(exports.UnityMessagePrefix, '');
         var m = JSON.parse(message);
