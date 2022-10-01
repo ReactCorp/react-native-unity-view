@@ -31,7 +31,6 @@ var react_native_1 = require("react-native");
 var MessageHandler_1 = require("./MessageHandler");
 var UnityModule_1 = require("./UnityModule");
 var react_1 = require("react");
-var UIManager = react_native_1.NativeModules.UIManager;
 var NativeUnityView;
 var UnityView = /** @class */ (function (_super) {
     __extends(UnityView, _super);
