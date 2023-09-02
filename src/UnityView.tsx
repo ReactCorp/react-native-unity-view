@@ -1,11 +1,8 @@
 import * as React from 'react'
-import { NativeModules, requireNativeComponent, View, ViewProps, ViewPropTypes } from 'react-native'
-import * as PropTypes from 'prop-types'
+import { NativeModules, requireNativeComponent, View, ViewProps } from 'react-native'
 import MessageHandler from './MessageHandler'
-import { UnityModule, UnityViewMessage } from './UnityModule'
-import { Component, useEffect, useState } from 'react'
-
-const { UIManager } = NativeModules
+import { UnityModule } from './UnityModule'
+import { Component } from 'react'
 
 export interface UnityViewProps extends ViewProps {
     /**
