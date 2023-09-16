@@ -4,7 +4,7 @@ export default class MessageHandler {
     seq: 'start' | 'end' | '';
     name: string;
     data: any;
-    constructor();
+    constructor(id: number, seq: 'start' | 'end' | '', name: string, data: any);
     static deserialize(message: string): MessageHandler;
     static isUnityMessage(message: string): boolean;
     send(data: any): void;
