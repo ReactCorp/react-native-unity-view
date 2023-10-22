@@ -1,42 +1,42 @@
-"use strict";
-exports.__esModule = true;
-exports.UnityMessagePrefix = void 0;
-var react_native_1 = require("react-native");
-var UnityNativeModule = react_native_1.NativeModules.UnityNativeModule;
-exports.UnityMessagePrefix = '@UnityMessage@';
-var MessageHandler = /** @class */ (function () {
-    function MessageHandler() {
+import { NativeModules } from 'react-native';
+const { UnityNativeModule } = NativeModules;
+export const UnityMessagePrefix = '@UnityMessage@';
+export default class MessageHandler {
+    id;
+    seq;
+    name;
+    data;
+    constructor(id, seq, name, data) {
+        this.id = id;
+        this.seq = seq;
+        this.name = name;
+        this.data = data;
     }
-    MessageHandler.deserialize = function (message) {
+    static deserialize(message) {
         if (!MessageHandler.isUnityMessage(message)) {
-            throw new Error("\"".concat(message, "\" is't an UnityMessage."));
+            throw new Error(`"${message}" is't an UnityMessage.`);
         }
-        message = message.replace(exports.UnityMessagePrefix, '');
-        var m = JSON.parse(message);
-        var handler = new MessageHandler();
-        handler.id = m.id;
-        handler.seq = m.seq;
-        handler.name = m.name;
-        handler.data = m.data;
+        message = message.replace(UnityMessagePrefix, '');
+        const m = JSON.parse(message);
+        const handler = new MessageHandler(m.id, m.seq, m.name, m.data);
         return handler;
-    };
-    MessageHandler.isUnityMessage = function (message) {
-        if (message.startsWith(exports.UnityMessagePrefix)) {
+    }
+    static isUnityMessage(message) {
+        if (message.startsWith(UnityMessagePrefix)) {
             return true;
         }
         else {
             return false;
         }
-    };
-    MessageHandler.prototype.send = function (data) {
-        UnityNativeModule.postMessage('UnityMessageManager', 'onRNMessage', exports.UnityMessagePrefix + JSON.stringify({
-            id: this.id,
-            seq: 'end',
-            name: this.name,
-            data: data
-        }));
-    };
-    return MessageHandler;
-}());
-exports["default"] = MessageHandler;
+    }
+    send(data) {
+        UnityNativeModule.postMessage('UnityMessageManager', 'onRNMessage', UnityMessagePrefix +
+            JSON.stringify({
+                id: this.id,
+                seq: 'end',
+                name: this.name,
+                data: data,
+            }));
+    }
+}
 //# sourceMappingURL=MessageHandler.js.map

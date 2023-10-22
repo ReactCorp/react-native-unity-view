@@ -1,11 +1,6 @@
-"use strict";
-exports.__esModule = true;
-exports.MessageHandler = exports.UnityModule = exports.UnityView = void 0;
-var UnityView_1 = require("./UnityView");
-exports.UnityView = UnityView_1["default"];
-var UnityModule_1 = require("./UnityModule");
-exports.UnityModule = UnityModule_1.UnityModule;
-var MessageHandler_1 = require("./MessageHandler");
-exports.MessageHandler = MessageHandler_1["default"];
-exports["default"] = UnityView_1["default"];
+import UnityView from './UnityView';
+import { UnityModule } from './UnityModule';
+import MessageHandler from './MessageHandler';
+export default UnityView;
+export { UnityView, UnityModule, MessageHandler };
 //# sourceMappingURL=index.js.map

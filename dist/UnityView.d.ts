@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ViewProps } from 'react-native';
+import { type ViewProps } from 'react-native';
 import MessageHandler from './MessageHandler';
 import { Component } from 'react';
 export interface UnityViewProps extends ViewProps {
@@ -14,12 +14,13 @@ export interface UnityViewProps extends ViewProps {
     children?: React.ReactNode;
     unloadOnUnmount?: boolean;
 }
-declare class UnityView extends Component<UnityViewProps> {
-    state: {
-        handle: any;
-    };
+interface UnityViewState {
+    handle: number | null;
+}
+declare class UnityView extends Component<UnityViewProps, UnityViewState> {
+    constructor(props: UnityViewProps);
     componentDidMount(): void;
     componentWillUnmount(): void;
-    render(): JSX.Element;
+    render(): React.JSX.Element;
 }
 export default UnityView;
