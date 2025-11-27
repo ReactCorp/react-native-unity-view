@@ -111,6 +111,28 @@ public class UnityUtils {
     }
 
     /**
+     * Unity 2022対応: unload後にUnityPlayerをリフレッシュする
+     * pause/resumeとwindowFocusChangedでSurfaceを再初期化
+     */
+    public static void refresh(final Activity activity) {
+        if (unityPlayer == null || activity == null) {
+            return;
+        }
+        activity.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                // pause/resumeでSurface再初期化
+                unityPlayer.pause();
+                unityPlayer.resume();
+                // windowFocusChangedでフォーカス復元
+                unityPlayer.windowFocusChanged(false);
+                unityPlayer.windowFocusChanged(true);
+                unityPlayer.requestFocus();
+            }
+        });
+    }
+
+    /**
      * Invoke by unity C#
      */
     public static void onUnityMessage(String message) {
@@ -154,9 +176,13 @@ public class UnityUtils {
         }
         ViewGroup.LayoutParams layoutParams = new ViewGroup.LayoutParams(MATCH_PARENT, MATCH_PARENT);
         group.addView(unityPlayer, 0, layoutParams);
+
+        // Unity 2022対応: Surface再初期化を促すためpause→resumeを実行
+        unityPlayer.pause();
+        unityPlayer.resume();
+
         unityPlayer.windowFocusChanged(true);
         unityPlayer.requestFocus();
-        unityPlayer.resume();
     }
 
     public interface CreateCallback {

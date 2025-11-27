@@ -50,6 +50,11 @@ export interface UnityModule {
   resume(): void
 
   /**
+   * Unity 2022対応: unload後にUnityPlayerをリフレッシュする
+   */
+  refreshUnity(): void
+
+  /**
    * Receive string and json message from unity.
    */
   addMessageListener(
@@ -159,6 +164,10 @@ class UnityModuleImpl implements UnityModule {
 
   public resume() {
     UnityNativeModule.resume()
+  }
+
+  public refreshUnity() {
+    UnityNativeModule.refreshUnity()
   }
 
   public addMessageListener(

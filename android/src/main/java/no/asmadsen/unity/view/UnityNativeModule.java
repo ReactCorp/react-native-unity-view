@@ -60,6 +60,15 @@ public class UnityNativeModule extends ReactContextBaseJavaModule implements Uni
         UnityUtils.resume();
     }
 
+    /**
+     * Unity 2022対応: unload後にUnityPlayerをリフレッシュする
+     * windowFocusChangedをシミュレートしてSurfaceを再初期化
+     */
+    @ReactMethod
+    public void refreshUnity() {
+        UnityUtils.refresh(getCurrentActivity());
+    }
+
     @Override
     public void onMessage(String message) {
         ReactContext context = getReactApplicationContext();
