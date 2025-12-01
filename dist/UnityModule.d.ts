@@ -38,6 +38,10 @@ export interface UnityModule {
      */
     resume(): void;
     /**
+     * Unity 2022対応: unload後にUnityPlayerをリフレッシュする
+     */
+    refreshUnity(): void;
+    /**
      * Receive string and json message from unity.
      */
     addMessageListener(listener: (message: string | MessageHandler) => void): number;

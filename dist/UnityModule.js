@@ -70,6 +70,9 @@ class UnityModuleImpl {
     resume() {
         UnityNativeModule.resume();
     }
+    refreshUnity() {
+        UnityNativeModule.refreshUnity();
+    }
     addMessageListener(listener) {
         const id = this.getHandleId();
         this.stringListeners[id] = listener;
